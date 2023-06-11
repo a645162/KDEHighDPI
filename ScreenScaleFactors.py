@@ -2,7 +2,10 @@ import os
 import pathlib
 import re
 
-mission = {'HDMI': '1'}
+mission = {
+    'DisplayPort-2': '1.75',
+    'HDMI-A-2': '1'
+}
 
 path = str(pathlib.Path.home()) + r'/.config/kdeglobals'
 
@@ -75,3 +78,5 @@ ScreenScaleFactors={}
 
 print()
 print(new_str)
+
+code = code.replace(ori_code, new_str)
