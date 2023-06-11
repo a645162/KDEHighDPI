@@ -1,16 +1,14 @@
 from screen import Screen
 from screen import getScreenStr
 
-screens = []
-
-screens.append(Screen('HDMI-A-2', 1920, 1080, 1.39))
-screens.append(Screen('DisplayPort-2', 3840, 2160, 1.0))
+# screens = []
+screens = [
+    Screen('HDMI-A-2', 1920, 1080, 1.39),
+    Screen('DisplayPort-2', 3840, 2160, 1.0)
+]
 
 if len(screens) == 0:
     exit(-1)
-
-# total_x = screen_left.new_x + screen_right.new_x
-# total_y = max(screen_left.new_y, screen_right.new_y)
 
 total_x = screens[0].new_x
 total_y = screens[0].new_y
