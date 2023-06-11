@@ -8,3 +8,4 @@
 /dataSources.local.xml
 # Zeppelin 忽略的文件
 /ZeppelinRemoteNotebooks/
+/GitLink.xml
