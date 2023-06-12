@@ -80,3 +80,6 @@ print()
 print(new_str)
 
 code = code.replace(ori_code, new_str)
+
+with open(path, 'w') as f:
+    f.write(code)
