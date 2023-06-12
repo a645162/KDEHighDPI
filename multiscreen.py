@@ -1,3 +1,13 @@
+# -*- coding: utf-8 -*-
+
+"""
+@File       : multiscreen.py
+@Date       : 2023/6/11
+@Author     : Haomin Kong
+@Description: Calculate the command line used by xrandr
+@IDE        : Pycharm
+"""
+
 from screen import Screen
 from screen import getScreenStr
 
