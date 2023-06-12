@@ -1,5 +1,6 @@
 class Screen(object):
-    def __init__(self, name, x, y, scale=1.0, off=False):
+
+    def __init__(self, name, x=1920, y=1080, scale=1.0, off=False):
         self.name = name
 
         self.x = x
