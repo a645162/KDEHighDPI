@@ -1,6 +1,5 @@
-
 class Screen(object):
-    def __init__(self, name, x, y, scale=1.0):
+    def __init__(self, name, x, y, scale=1.0, off=False):
         self.name = name
 
         self.x = x
@@ -17,12 +16,16 @@ class Screen(object):
         self.new_x = round(self.x * self.scale)
         self.new_y = round(self.y * self.scale)
 
+        self.off = off
 
-def getScreenStr(screen):
-    return '--output {} --mode {}x{} --scale {}x{} --pos {}x{} --panning {}x{}+{}+{}'.format(
-        screen.name,
-        screen.x, screen.y,
-        screen.scale, screen.scale,
-        screen.pos_x, screen.pos_y,
-        screen.new_x, screen.new_y, screen.panning_x, screen.panning_y,
-    )
+    def get_screen_str(self):
+        if self.off:
+            return '--output {} --off'.format(self.name)
+        else:
+            return '--output {} --mode {}x{} --scale {}x{} --pos {}x{} --panning {}x{}+{}+{}'.format(
+                self.name,
+                self.x, self.y,
+                self.scale, self.scale,
+                self.pos_x, self.pos_y,
+                self.new_x, self.new_y, self.panning_x, self.panning_y,
+            )
