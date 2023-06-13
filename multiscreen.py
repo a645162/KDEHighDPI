@@ -23,7 +23,7 @@ Auto_Run = True
 # 请从左到右依次填写
 # Please fill in from left to right
 screens = [
-    Screen(name='HDMI-A-2', x=1920, y=1080, scale=1.6, off=False),
+    Screen(name='HDMI-A-2', x=1920, y=1080, scale=1.6, r="143.99", off=False),
     Screen(name='DisplayPort-2', x=3840, y=2160, scale=1.0, off=False),
 ]
 
