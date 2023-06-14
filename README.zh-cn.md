@@ -50,7 +50,7 @@ chmod +w ~/.config/kdeglobals
 
 ## 工具2.xrandr 命令生成器(重启失效)
 
-**脚本文件名:** multiscreen.py
+**脚本文件名:** x11.py
 
 **注意：**
 
