@@ -84,6 +84,26 @@ screens = [
 配置完成后
 直接执行脚本即可！
 
+推荐保存成一个 x11multiscreen.desktop 文件并防止在桌面，方便每次使用！
+
+我的配置如下，仅供参考！
+```ini
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Categories=Settings;
+Terminal=false
+GenericName=X11MultiScreen
+GenericName[zh_CN]=X11多屏幕
+Comment=X11MultiScreen
+Comment[zh_CN]=X11多屏幕
+Name=X11MultiScreen
+Name[zh_CN]=X11多屏幕
+Icon=preferences-system
+Exec=python3 "/home/konghaomin/KDEHighDPI/x11.py"
+```
+
 #### 注意事项
 
 使用前，必须保证要调整的屏幕处于关闭状态，也就是所有缩放倍率不是 1.0
