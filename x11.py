@@ -26,6 +26,7 @@ Auto_Run = True
 screens = [
     Screen(name='HDMI-A-2', x=1920, y=1080, scale=1.6, r="143.99", off=False),
     Screen(name='DisplayPort-2', x=3840, y=2160, scale=1.0, off=False),
+    Screen(name='DVI-D-1-0', off=False),
 ]
 
 
@@ -73,7 +74,7 @@ for screen in screens:
         screens1.append(screen)
 
 generate_command(screens1, Auto_Run)
-time.sleep(1)
+time.sleep(2)
 print()
 
 generate_command(screens, Auto_Run)
