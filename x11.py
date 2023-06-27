@@ -24,20 +24,33 @@ Auto_Run = True
 # 请从左到右依次填写
 # Please fill in from left to right
 screens = [
-    Screen(name='HDMI-A-2', x=1920, y=1080, scale=1.6, r="143.99", off=False),
-    Screen(name='DisplayPort-2', x=3840, y=2160, scale=1.0, off=False),
-    Screen(name='DVI-D-1-0', off=False),
+    Screen(name='DisplayPort-1', x=3840, y=2160, scale=1.0, off=False),
+    Screen(name='DisplayPort-2', x=1920, y=1080, scale=1.6, r="143.99", off=False),
+    Screen(name='DVI-D-1-0', off=True),
 ]
 
 
 def generate_command(screen_list, auto_run):
-    if len(screen_list) == 0:
+    total_screen_count = len(screen_list)
+
+    if total_screen_count == 0:
         exit(-1)
 
-    total_x = screen_list[0].new_x
-    total_y = screen_list[0].new_y
+    first_screen_index = -1
 
-    for i in range(1, len(screen_list)):
+    for i in range(0, total_screen_count):
+        if not screen_list[i].off:
+            first_screen_index = i
+            break
+
+    if first_screen_index == -1:
+        print("No screen!")
+        exit(1)
+
+    total_x = screen_list[first_screen_index].new_x
+    total_y = screen_list[first_screen_index].new_y
+
+    for i in range(first_screen_index + 1, total_screen_count):
         if screen_list[i].off:
             continue
 
