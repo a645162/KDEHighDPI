@@ -79,15 +79,18 @@ def generate_command(screen_list, auto_run):
 
 
 screens1 = []
+change = False
 
 for screen in screens:
-    if screen.scale != 1.0:
+    if not screen.off and screen.scale != 1.0:
+        change = True
         screens1.append(Screen(name=screen.name, off=True))
     else:
         screens1.append(screen)
 
-generate_command(screens1, Auto_Run)
-time.sleep(2)
-print()
+if change:
+    generate_command(screens1, Auto_Run)
+    time.sleep(2)
+    print()
 
 generate_command(screens, Auto_Run)
