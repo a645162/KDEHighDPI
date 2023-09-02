@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
 
 """
-@File       : x11.py
-@Date       : 2023/6/14
-@Author     : Haomin Kong
+@File: x11.py
+@Date: 2023/6/14
+@Author: Haomin Kong
 @Description: Calculate the command line used by xrandr
-@IDE        : Pycharm
+@IDE: Pycharm
 """
 
 import time
 
 from screen import Screen
+from screen import check_is_connected
 from utils import run_cmd
 
 # Auto_Run = False
@@ -25,7 +26,7 @@ Auto_Run = True
 # Please fill in from left to right
 screens = [
     Screen(name='DisplayPort-1', x=3840, y=2160, scale=1.0, off=False),
-    Screen(name='DisplayPort-2', x=1920, y=1080, scale=1.6, r="143.99", off=False),
+    Screen(name='DisplayPort-3', x=1920, y=1080, scale=1.6, r="143.99", off=False),
     Screen(name='DVI-D-1-0', off=True),
 ]
 
@@ -78,19 +79,25 @@ def generate_command(screen_list, auto_run):
         run_cmd(xrandr_command)
 
 
-screens1 = []
-change = False
+if __name__ == '__main__':
 
-for screen in screens:
-    if not screen.off and screen.scale != 1.0:
-        change = True
-        screens1.append(Screen(name=screen.name, off=True))
-    else:
-        screens1.append(screen)
+    screens1 = []
+    change = False
 
-if change:
-    generate_command(screens1, Auto_Run)
-    time.sleep(2)
-    print()
+    for screen in screens:
+        if not check_is_connected(screen.name):
+            print("配置有误，请检查！")
+            exit(1)
 
-generate_command(screens, Auto_Run)
+        if not screen.off and screen.scale != 1.0:
+            change = True
+            screens1.append(Screen(name=screen.name, off=True))
+        else:
+            screens1.append(screen)
+
+    if change:
+        generate_command(screens1, Auto_Run)
+        time.sleep(2)
+        print()
+
+    generate_command(screens, Auto_Run)

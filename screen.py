@@ -1,3 +1,19 @@
+import subprocess
+
+
+def check_is_connected(name):
+    xrandr_str = subprocess.getoutput("xrandr")
+    # print(xrandr_str)
+    if xrandr_str.find(name) == -1:
+        print("找不到接口", name)
+        return False
+    elif xrandr_str.find(name + " disconnected") != -1:
+        print("接口", name, "未连接！")
+        return False
+    else:
+        return True
+
+
 class Screen(object):
 
     def __init__(self, name, x=1920, y=1080, scale=1.0, r='', off=False):
